@@ -11,7 +11,8 @@ using namespace std;
 
 void usrWriteLine()  //Creates file if it doesnt exist and allows user to make entry
 {
-	ofstream GovernmentSpyDevice("GovernmentSpyDevice.txt", ios::app); //appends at the end of the file
+	ofstream GovernmentSpyDevice; 
+	GovernmentSpyDevice.open("GovernmentSpyDevice.txt", ios::app); //appends at the end of the file
 	string msg;
 	string msgType;
 	int usrWriteTypeChoice;
@@ -54,11 +55,13 @@ void usrWriteLine()  //Creates file if it doesnt exist and allows user to make e
 	}
 
 	cout << "\nSAVED- " + msg << endl;
+	GovernmentSpyDevice.close();
 }
 
 void searchFile() //searching for a tag
 {
-	ifstream GovernmentSpyDeviceRead("GovernmentSpyDevice.txt");
+	ifstream GovernmentSpyDeviceRead; 
+	GovernmentSpyDeviceRead.open("GovernmentSpyDevice.txt");
 	int usrTypeChoice;
 	cout << "What type of item would you like to search?" << endl;
 	cout << "Reminder, Message, Schedule, or Alarm. (1/2/3/4)" << endl;
@@ -96,13 +99,16 @@ void searchFile() //searching for a tag
 		}
 	}
 	cout << "\n";
+	GovernmentSpyDeviceRead.close();
 }
 
 void readFile() //read entire file
 {
-	ifstream GovernmentSpyDeviceRead("GovernmentSpyDevice.txt");
+	ifstream GovernmentSpyDeviceRead;
+	GovernmentSpyDeviceRead.open("GovernmentSpyDevice.txt");
 	string line;
 	while (getline(GovernmentSpyDeviceRead, line)) { //printing line by line of the file
 		cout << line << endl;
 	}
+	GovernmentSpyDeviceRead.close();
 }
